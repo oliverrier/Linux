@@ -17,25 +17,28 @@ usage(){
 #main
 read numberProposed
 
+if [[ "$numberProposed" =~ ^[0-9]+$  ]] 2> /dev/null
+	then 
+		while test  $numberProposed != $numberToFind 
+			do
+				if test $numberProposed -lt $numberToFind 2> /dev/null
+					then
+						echo "Your number is less than expected"
+						((numberOfTry++))
+				elif test $numberProposed -gt $numberToFind 2> /dev/null
+					then
+						echo "Your number is greater than expected"
+						((numberOfTry++))
+				else
+					echo "You didn't follow the rules, did you ?"
+				fi
+			read numberProposed
+			done
+	else
+		echo "You didn't follow the rules, did you ?"
+fi
 
-while test $numberProposed != $numberToFind
-	do
-		if test $numberProposed -lt $numberToFind
-			then
-				echo "Your number is less than expected"
-				((numberOfTry++))
-		elif test $numberProposed -gt $numberToFind
-			then
-				echo "Your number is greater than expected"
-				((numberOfTry++))
-
-		else
-			echo "You didn't follow the rules, did you ?"
-		fi
-	read numberProposed
-	done
-
-if test $numberProposed -eq $numberToFind
+if test $numberProposed -eq $numberToFind 2> /dev/null
 	then
 		echo "You found the number ! Gratz ! It took you $numberOfTry tries !"
 fi

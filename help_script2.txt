@@ -1,0 +1,10 @@
+commande pour trouver le jour :
+
+date +%u
+
+suppression fichier backup avec les sticky bit à T
+
+A deplacer dans le /usr/bin
+Tester le script avec des lignes de commande et l'expliquer
+Mettre les test dans un fichier pour les avoir plus tard
+Ou dans le script
